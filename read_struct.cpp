@@ -4,8 +4,9 @@ int main(){
 
 
 	// Set up file and dataset
-      	H5File* file = new H5File( FILE_NAME, H5F_ACC_RDONLY );
-	DataSet* dataset = new DataSet (file->openDataSet( DATASET_NAME ));	
+	H5File* file = new H5File( FILE_NAME, H5F_ACC_RDONLY );
+
+	std::shared_ptr<DataSet> dataset(new DataSet(file->openDataSet( DATASET_NAME )));
 
 	// Create data type for SimpleStruct
     	CompType mtype(sizeof(SimpleStruct));
@@ -24,10 +25,8 @@ int main(){
 		std::cout << dummy[i] << std::endl;
 		}
 
-
-	// Release resources
-     	delete dataset; 
-      	delete file;
+	
+	delete file;
 	return 0;
 }
 
