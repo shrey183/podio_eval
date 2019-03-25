@@ -38,6 +38,9 @@ if [ "$ver" -lt "27" ]
 		exit 1
 fi
 
+# If python exits then install pip
+sudo apt install python-pip
+
 # install pyyaml
 pip install pyyaml
 
@@ -56,4 +59,3 @@ make -j 4 install
 
 # Finally run unit tests
 make test
-
