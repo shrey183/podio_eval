@@ -22,7 +22,7 @@ and finally in order to view .h5 files using the command `h5dump` install `hdf5-
 
 Now, return to the directory containing the files `write_struct.cpp`, `read_struct.cpp`, `SimpleStruct.h` and `common.h` and run:
 
-`make clean`  
+`make`  
 
 This creates two executables `write_struct` and `read_struct` which can be run (sequentially since `read_struct` needs the HDF5 file to exists in order to read data from it). 
 
