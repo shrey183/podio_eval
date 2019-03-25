@@ -12,7 +12,9 @@ int main()
 	}
 	
 	// create file 
-	H5File* file = new H5File(FILE_NAME, H5F_ACC_TRUNC);
+
+	std::shared_ptr<H5File> file(new H5File(FILE_NAME, H5F_ACC_TRUNC));
+
 
 	// Create data type for SimpleStruct 
 	CompType mtype(sizeof(SimpleStruct));
@@ -22,14 +24,12 @@ int main()
 	mtype.insertMember(MEMBER4, HOFFSET(SimpleStruct, p), H5Tarray_create(H5T_NATIVE_INT, 1, array_dim));
 
    	// create dataset
-      	DataSet* dataset = new DataSet(file->createDataSet(DATASET_NAME, mtype, space));
+
+	std::shared_ptr<DataSet> dataset(new DataSet(file->createDataSet(DATASET_NAME, mtype, space)));
 
 	// write data
 	dataset->write(dummy, mtype);
       	
-	// release resources
-      	delete dataset;
-      	delete file;
 	return 0;
 
 	}
