@@ -6,6 +6,7 @@
 #include <string>
 #include "H5Cpp.h"
 #include "SimpleStruct.h"
+#include <memory> // for the smart pointer
 using namespace H5;
 
 const H5std_string FILE_NAME( "SimpleStruct_to_HDF5.h5" );
